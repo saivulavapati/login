@@ -17,3 +17,27 @@ resource "aws_subnet" "frontend-subnet" {
     Name = "frontend-subnet"
   }
 }
+
+#backend subnet
+resource "aws_subnet" "backend-subnet" {
+  vpc_id     = aws_vpc.vpc.id
+  cidr_block = "10.0.2.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "backend-subnet"
+  }
+}
+
+#database subnet
+resource "aws_subnet" "database-subnet" {
+  vpc_id     = aws_vpc.vpc.id
+  cidr_block = "10.0.3.0/24"
+
+  tags = {
+    Name = "database-subnet"
+  }
+}
+
+
+
